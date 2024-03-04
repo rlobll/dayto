@@ -7,10 +7,34 @@ import Header from "./common/header";
 import Login from "./page/login";
 import styled from "styled-components";
 import KakaoMap from "./page/map/kakaoMap";
+import Splash from "./page/splash";
 
 const App = () => {
   const [tab, setTab] = useState("home");
+  const [searchList, setSearchList] = useState([
+    // {
+    //   title: "카카오",
+    //   latlng: new kakao.maps.LatLng(33.450705, 126.570677),
+    // },
+    // {
+    //   title: "생태연못",
+    //   latlng: new kakao.maps.LatLng(33.450936, 126.569477),
+    // },
+    // {
+    //   title: "텃밭",
+    //   latlng: new kakao.maps.LatLng(33.450879, 126.56994),
+    // },
+    // {
+    //   title: "근린공원",
+    //   latlng: new kakao.maps.LatLng(33.451393, 126.570738),
+    // },
+  ]);
 
+  const addList = (searchValue) => {
+    setSearchList((prev) => [...prev, searchValue]);
+    // 배열을 사용 할 때 이렇게 사용한다
+  };
+  console.log(searchList);
   const changeTab = (tabState) => {
     if (tabState === "home") {
       return setTab("home");
@@ -45,20 +69,28 @@ const App = () => {
   // </div>
   // 이건 로그인 창 들어갈 때 아래부분에 지도가 나타남
 
+  const [isStart, setIsStart] = useState(false);
+
   return (
     <div className="App">
-      <Header changeTab={(tabState) => changeTab(tabState)} tab={tab} />
-      {tab === "login" && <Login />}
-      <Width>
-        {/* {tab !== "login"  && < 지도 부분 >} 이거는 지도 부분이고 로그인은 또 따로 해야 나타난다 */}
-        {tab !== "login" && <KakaoMap />}
+      {isStart ? (
         <div>
-          {tab === "home" && <Home />}
-          {tab === "location" && <Location />}
-          {tab === "food" && <Food />}
-          {tab === "dessert" && <Dessert />}
+          <Header changeTab={(tabState) => changeTab(tabState)} tab={tab} />
+          {tab === "login" && <Login />}
+          <Width>
+            {/* {tab !== "login"  && < 지도 부분 >} 이거는 지도 부분이고 로그인은 또 따로 해야 나타난다  */}
+            {tab !== "login" && <KakaoMap />}
+            <div>
+              {tab === "home" && <Home />}
+              {tab === "location" && <Location />}
+              {tab === "food" && <Food />}
+              {tab === "dessert" && <Dessert />}
+            </div>
+          </Width>
         </div>
-      </Width>
+      ) : (
+        <Splash onClick={() => setIsStart((prev) => !prev)} />
+      )}
     </div>
   );
 };
@@ -73,3 +105,8 @@ const Width = styled.div`
   /* justify-content: space-between; */
   gap: 40px;
 `;
+
+// 1. 단어 입력
+// 2. 지도에 마커가 나타남
+// 3. 마커를 누르면 아래 빈 공간에 정보 주르륵
+// 4. 단어 저장 버튼

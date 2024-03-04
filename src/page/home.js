@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 
-const Home = () => {
+const Home = ({ addList, searchList }) => {
   const [searchValue, setSearchValue] = useState("");
   const [searchResult, setSearchResult] = useState("");
 
@@ -33,7 +33,15 @@ const Home = () => {
       </div>
       {searchResult && <p>"{searchResult}"에 대한 결과입니다</p>}
       <div>
-        <p>검색하고 나온 애들 자리</p>
+        <ResultList>
+          <p>검색하고 나온 애들 자리</p>
+          <div>
+            {/* {searchList.map((e) => {
+              return <div>{e}</div>;
+            })} */}
+          </div>
+          <div onClick={() => addList(searchValue)}>추가</div>
+        </ResultList>
       </div>
     </HomeSearch>
   );
@@ -61,4 +69,11 @@ const HomeBtn = styled.button`
   padding: 10px 20px;
   color: white;
   cursor: pointer;
+`;
+
+const ResultList = styled.div`
+  padding: 0 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 `;

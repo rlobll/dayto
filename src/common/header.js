@@ -17,7 +17,7 @@ const Header = ({ changeTab, tab }) => {
 
   return (
     <Wrapper>
-      <LogoImage src="../logo44.png" alt="" onClick={toggleTab} />
+      <LogoImage src="../logo444.png" alt="" onClick={toggleTab} />
       <Menu>
         {tabList.map((item, index) => {
           return (
@@ -75,7 +75,7 @@ const Wrapper = styled.div`
 `;
 
 const LogoImage = styled.img`
-  width: 130px;
+  width: 150px;
   cursor: pointer;
 `;
 
