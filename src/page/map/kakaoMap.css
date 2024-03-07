@@ -1,0 +1,11 @@
+.App #pagination a {
+  color: black;
+
+  text-decoration: none;
+  margin: 0 10px;
+}
+
+.App #pagination a.on {
+  color: #ff9843;
+  font-weight: bold;
+}

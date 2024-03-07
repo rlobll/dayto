@@ -4,7 +4,7 @@ import styled from "styled-components";
 const Header = ({ changeTab, tab }) => {
   const tabList = [
     { index: 0, name: "홈", value: "home" },
-    { index: 1, name: "지역", value: "location" },
+    // { index: 1, name: "지역", value: "location" },
     { index: 2, name: "음식", value: "food" },
     { index: 3, name: "디저트", value: "dessert" },
   ];
@@ -13,6 +13,12 @@ const Header = ({ changeTab, tab }) => {
 
   const toggleTab = () => {
     setIsLogin(!isLogin);
+  };
+
+  const [showMyPage, setShowMyPage] = useState(false);
+
+  const handleClick = () => {
+    setShowMyPage(!showMyPage); // 클릭할 때마다 상태를 토글합니다.
   };
 
   return (
@@ -52,7 +58,16 @@ const Header = ({ changeTab, tab }) => {
         </MenuText>
       ) : (
         <LogoutBtn>
-          <Hover>김은비</Hover>
+          <div onClick={handleClick}>
+            <Hover>김은비</Hover>
+            <div>
+              {showMyPage && (
+                <MyPage>
+                  <Hover>마이페이지</Hover>
+                </MyPage>
+              )}
+            </div>
+          </div>
           <Hover isCurrent={tab === "logout"} onClick={() => changeTab("home")}>
             로그아웃
           </Hover>
@@ -97,9 +112,11 @@ const MenuText = styled.div`
 
 const LogoutBtn = styled.div`
   display: flex;
+  align-items: center;
   flex-shrink: 0; // 글씨 변형 막기
   font-weight: bold;
-  gap: 10px;
+  text-align: center;
+  gap: 30px;
   cursor: pointer;
 `;
 
@@ -107,4 +124,12 @@ const Hover = styled.div`
   &:hover {
     color: #ff9843;
   }
+`;
+
+const MyPage = styled.div`
+  position: absolute;
+  margin-top: 10px;
+  border: 1px solid #ff9843;
+  padding: 10px;
+  font-size: 15px;
 `;

@@ -49,7 +49,7 @@ const KakaoImg = styled.img.attrs({
   height: 30px;
 `;
 
-const KakaoBtn = styled.button`
+const KakaoBtn = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
@@ -71,7 +71,7 @@ const NaverImg = styled.img.attrs({
   height: 40px;
 `;
 
-const NaverBtn = styled.button`
+const NaverBtn = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;

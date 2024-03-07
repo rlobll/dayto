@@ -1,60 +1,67 @@
 import React, { useState } from "react";
 import styled from "styled-components";
+import KakaoMap from "./map/kakaoMap";
+// import LandingPage from "./map/LandingPage";
 
-const Home = ({ addList, searchList }) => {
+const Home = ({ addList }) => {
   const [searchValue, setSearchValue] = useState("");
   const [searchResult, setSearchResult] = useState("");
+  console.log("searchResult", searchResult);
 
   const ChangInpute = (e) => {
     setSearchValue(e.target.value);
   };
 
   const handleSearch = (e) => {
+    e.preventDefault();
     setSearchResult(searchValue);
-    // setSearchValue(""); // 초기화 (근데 이상하게 나오면서 초기화 됨)
-  };
-
-  const keyDownEnter = (e) => {
-    if (e.key === "Enter") {
-      handleSearch(); // 엔터 키가 눌리면 검색 실행
-    }
+    // setSearchValue(""); // 입력 다 되고나서 인풋창 초기화
   };
 
   return (
-    <HomeSearch>
-      <div>
-        <HomeInput
-          placeholder="검색어입력"
-          value={searchValue}
-          onChange={ChangInpute}
-          onKeyDown={keyDownEnter}
-        />
-        <HomeBtn onClick={handleSearch}>검색</HomeBtn>
-      </div>
-      {searchResult && <p>"{searchResult}"에 대한 결과입니다</p>}
-      <div>
-        <ResultList>
-          <p>검색하고 나온 애들 자리</p>
-          <div>
-            {/* {searchList.map((e) => {
+    <>
+      <HomeSearch>
+        <Form>
+          <form onSubmit={handleSearch}>
+            <HomeInput
+              placeholder="검색어입력"
+              value={searchValue}
+              onChange={ChangInpute}
+            />
+            <HomeBtn type="submit">검색</HomeBtn>
+          </form>
+        </Form>
+        <div>
+          {/* {searchResult && <p>"{searchResult}"에 대한 결과입니다</p>} */}
+          <ResultList>
+            <div>
+              {/* {searchList.map((e) => {
               return <div>{e}</div>;
             })} */}
-          </div>
-          <div onClick={() => addList(searchValue)}>추가</div>
-        </ResultList>
-      </div>
-    </HomeSearch>
+            </div>
+            {/* <div onClick={() => addList(searchValue)}>추가</div> */}
+          </ResultList>
+        </div>
+        {/* <LandingPage /> */}
+      </HomeSearch>
+      <KakaoMap searchPlace={searchResult} />
+    </>
   );
 };
 
 export default Home;
 
 const HomeSearch = styled.div`
-  width: 480px;
+  max-width: 1000px;
+`;
+
+const Form = styled.div`
+  display: flex;
+  justify-content: end;
 `;
 
 const HomeInput = styled.input`
-  width: 360px;
+  width: 380px;
   padding: 10px 15px;
   border-radius: 10px;
   border: 1px solid #ff9843;
@@ -66,14 +73,12 @@ const HomeBtn = styled.button`
   border-radius: 10px;
   background: #ff9843;
   margin-left: 10px;
-  padding: 10px 20px;
+  padding: 10px 25px;
   color: white;
   cursor: pointer;
 `;
 
 const ResultList = styled.div`
   padding: 0 20px;
-  display: flex;
-  justify-content: space-between;
   align-items: center;
 `;
