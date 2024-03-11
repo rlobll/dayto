@@ -1,13 +1,12 @@
 import { useState } from "react";
 import Home from "./page/home";
-import Location from "./page/location";
 import Food from "./page/food";
 import Dessert from "./page/dessert";
 import Header from "./common/header";
 import Login from "./page/login";
 import styled from "styled-components";
-// import KakaoMap from "./page/map/kakaoMap";
 import Splash from "./page/splash";
+import Location from "./page/location";
 import KakaoMap from "./page/map/kakaoMap";
 
 const App = () => {
