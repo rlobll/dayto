@@ -170,6 +170,8 @@ const List = styled.div`
   overflow: scroll;
   padding: 10px;
   font-size: 18px;
+  /* overflow-x: hidden; */
+  /* overflow-y: hidden; */
 `;
 
 const ListTitle = styled.div`

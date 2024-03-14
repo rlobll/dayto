@@ -32,6 +32,7 @@ const LoginWrap = styled.div`
   max-width: 500px;
   font-size: 25px;
   font-weight: bold;
+  padding: 0 15px;
 `;
 
 const ButtonWrap = styled.div`

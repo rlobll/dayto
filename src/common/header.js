@@ -24,19 +24,20 @@ const Header = ({ changeTab, tab }) => {
   return (
     <Wrapper>
       <LogoImage src="../logo444.png" alt="" onClick={toggleTab} />
-      <Menu>
-        {tabList.map((item, index) => {
-          return (
-            <MenuText
-              key={index}
-              $iscurrent={item.value === tab}
-              onClick={() => changeTab(item.value)}
-            >
-              {item.name}
-            </MenuText>
-          );
-        })}
-        {/* <MenuText tab={tab} onClick={() => changeTab("home")}>
+      <TotalMenu>
+        <Menu>
+          {tabList.map((item, index) => {
+            return (
+              <MenuText
+                key={index}
+                $iscurrent={item.value === tab}
+                onClick={() => changeTab(item.value)}
+              >
+                {item.name}
+              </MenuText>
+            );
+          })}
+          {/* <MenuText tab={tab} onClick={() => changeTab("home")}>
           홈
         </MenuText>
         <MenuText tab={tab} onClick={() => changeTab("location")}>
@@ -48,34 +49,35 @@ const Header = ({ changeTab, tab }) => {
         <MenuText tab={tab} onClick={() => changeTab("dessert")}>
           디져트
         </MenuText> */}
-      </Menu>
-      {isLogin ? (
-        <MenuText
-          $iscurrent={tab === "login"}
-          onClick={() => changeTab("login")}
-        >
-          로그인
-        </MenuText>
-      ) : (
-        <LogoutBtn>
-          <div onClick={handleClick}>
-            <Hover>김은비</Hover>
-            <div>
-              {showMyPage && (
-                <MyPage>
-                  <Hover>마이페이지</Hover>
-                </MyPage>
-              )}
-            </div>
-          </div>
-          <Hover
-            $iscurrent={tab === "logout"}
-            onClick={() => changeTab("home")}
+        </Menu>
+        {isLogin ? (
+          <MenuText
+            $iscurrent={tab === "login"}
+            onClick={() => changeTab("login")}
           >
-            로그아웃
-          </Hover>
-        </LogoutBtn>
-      )}
+            로그인
+          </MenuText>
+        ) : (
+          <LogoutBtn>
+            <div onClick={handleClick}>
+              <Hover>김은비</Hover>
+              <div>
+                {showMyPage && (
+                  <MyPage>
+                    <Hover>마이페이지</Hover>
+                  </MyPage>
+                )}
+              </div>
+            </div>
+            <Hover
+              $iscurrent={tab === "logout"}
+              onClick={() => changeTab("home")}
+            >
+              로그아웃
+            </Hover>
+          </LogoutBtn>
+        )}
+      </TotalMenu>
     </Wrapper>
   );
 };
@@ -90,11 +92,26 @@ const Wrapper = styled.div`
   padding-right: 20px;
   height: 50px;
   max-width: 1000px;
+
+  @media (max-width: 485px) {
+    display: block;
+    text-align: center;
+    padding: 0;
+  }
 `;
 
 const LogoImage = styled.img`
   width: 150px;
   cursor: pointer;
+`;
+
+const TotalMenu = styled.div`
+  display: flex;
+  width: 100%;
+
+  @media (max-width: 485px) {
+    padding: 0 15px;
+  }
 `;
 
 const Menu = styled.div`

@@ -17,9 +17,11 @@ const FoodVideoList = (props) => {
 
   return (
     <VideoList>
-      {videos.map((food, index) => (
-        <FoodVideoItem key={index} video={food} />
-      ))}
+      <ScrollBar>
+        {videos.map((food, index) => (
+          <FoodVideoItem key={index} video={food} />
+        ))}
+      </ScrollBar>
     </VideoList>
   );
 };
@@ -27,11 +29,30 @@ const FoodVideoList = (props) => {
 export default FoodVideoList;
 
 const VideoList = styled.div`
-  display: flex;
-  overflow: scroll;
-  gap: 30px;
   border: 1px solid #ff9843;
   border-radius: 10px;
   padding: 20px 10px 10px;
   margin-bottom: 100px;
+  overflow-y: hidden;
+  /* overflow-x: hidden; */
+`;
+
+const ScrollBar = styled.div`
+  display: flex;
+  overflow: scroll;
+  gap: 30px;
+  cursor: pointer;
+
+  /* 스크롤바 디자인 */
+  &::-webkit-scrollbar {
+    height: 10px; /* 스크롤바 높이 */
+  }
+  &::-webkit-scrollbar-thumb {
+    background-color: #ff9843; /* 스크롤바 색상 */
+    border-radius: 10px; /* 스크롤바의 모서리를 둥글게 만듭니다. */
+  }
+  /* &::-webkit-scrollbar-track { */
+  /* background-color: #f1f1f1; 스크롤바 트랙 색상 */
+  /* border-radius: 4px; 스크롤바의 모서리를 둥글게 만듭니다. */
+  /* } */
 `;
