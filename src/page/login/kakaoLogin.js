@@ -8,12 +8,13 @@ const Kakao = () => {
 
   const restApiKey = process.env.REACT_APP_REST_API_KEY;
   console.log("kakao", restApiKey);
-  const redirectUri = process.env.REACT_APP_REDIRECT_URI;
+  const redirectUri = "http://localhost:3000/auth/kakao";
   console.log("kakao", redirectUri);
   const kakaoURL = `https://kauth.kakao.com/oauth/authorize?client_id=${restApiKey}&redirect_uri=${redirectUri}&response_type=code`;
 
   const kakaoClick = () => {
-    window.open(kakaoURL, "kakaoPopup", "width=600,height=400");
+    // window.open(kakaoURL, "naverPopup", "width=600,height=400"); // 팝업창으로 나타나게 하는 거
+    window.location.href = kakaoURL;
   };
   return (
     <>

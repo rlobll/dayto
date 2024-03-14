@@ -14,7 +14,6 @@ const Naver = () => {
   };
   return (
     <div>
-      <div id="naver_id_login" style={{ display: "none" }} />
       <NaverLogin onClick={naverClick}>네이버 로그인</NaverLogin>
     </div>
   );
