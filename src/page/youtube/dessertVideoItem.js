@@ -1,8 +1,6 @@
 import React, { useEffect } from "react";
 
 const DessertVideoItem = (props) => {
-  //   const thumbnailUrl = props.video.snippet.thumbnails.high.url; // 썸네일 URL 추출
-
   // YouTube Iframe Player API 스크립트 로드하기
   useEffect(() => {
     const tag = document.createElement("script");
@@ -44,13 +42,13 @@ const DessertVideoItem = (props) => {
   return (
     <div>
       <iframe
-        id="player"
-        title="YouTube Food Video"
+        id="dessertPlayer"
+        title="YouTube Dessert Video"
         type="text/html"
         width="300"
         height="200"
         src={`https://www.youtube.com/embed/${props.video.id.videoId}?enablejsapi=1&origin=${window.location.origin}`}
-        frameborder="0"
+        frameBorder="0"
       ></iframe>
       <p>{props.video.snippet.title}</p>
     </div>

@@ -16,8 +16,8 @@ const DessertVideoList = (props) => {
 
   return (
     <VideoList>
-      {videos.map((video) => (
-        <FoodVideoItem key={video.id} video={video} />
+      {videos.map((dessert, index) => (
+        <FoodVideoItem key={index} video={dessert} />
       ))}
     </VideoList>
   );

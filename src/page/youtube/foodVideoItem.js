@@ -44,13 +44,13 @@ const FoodVideoItem = (props) => {
   return (
     <div>
       <iframe
-        id="player"
+        id="foodPlayer"
         title="YouTube Food Video"
         type="text/html"
         width="300"
         height="200"
         src={`https://www.youtube.com/embed/${props.video.id.videoId}?enablejsapi=1&origin=${window.location.origin}`}
-        frameborder="0"
+        frameBorder="0"
       ></iframe>
       <p>{props.video.snippet.title}</p>
     </div>

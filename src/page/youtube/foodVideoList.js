@@ -3,6 +3,7 @@ import FoodVideoItem from "./foodVideoItem";
 import styled from "styled-components";
 
 // const FoodVideoList = (props) => (
+
 //   <ul>
 //     {props.videos.map((video) => (
 //       <FoodVideoItem key={video.id} video={video} />
@@ -16,8 +17,8 @@ const FoodVideoList = (props) => {
 
   return (
     <VideoList>
-      {videos.map((video) => (
-        <FoodVideoItem key={video.id} video={video} />
+      {videos.map((food, index) => (
+        <FoodVideoItem key={index} video={food} />
       ))}
     </VideoList>
   );

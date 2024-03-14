@@ -1,4 +1,4 @@
-// import { useState } from "react";
+// import { useEffect } from "react";
 import Kakao from "./login/kakaoLogin";
 import Naver from "./login/naverLogin";
 import styled from "styled-components";

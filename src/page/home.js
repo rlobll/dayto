@@ -30,9 +30,11 @@ const Home = ({ addList }) => {
             />
             <HomeBtn type="submit">검색</HomeBtn>
           </form>
+          <SearchText>
+            {searchResult && <p>" {searchResult} "에 대한 결과입니다</p>}
+          </SearchText>
         </Form>
         <div>
-          {/* {searchResult && <p>"{searchResult}"에 대한 결과입니다</p>} */}
           <ResultList>
             <div>
               {/* {searchList.map((e) => {
@@ -42,7 +44,6 @@ const Home = ({ addList }) => {
             {/* <div onClick={() => addList(searchValue)}>추가</div> */}
           </ResultList>
         </div>
-        {/* <LandingPage /> */}
       </HomeSearch>
       <KakaoMap searchPlace={searchResult} />
     </>
@@ -57,11 +58,11 @@ const HomeSearch = styled.div`
 
 const Form = styled.div`
   display: flex;
-  justify-content: end;
+  /* width: 500px; */
 `;
 
 const HomeInput = styled.input`
-  width: 380px;
+  width: 360px;
   padding: 10px 15px;
   border-radius: 10px;
   border: 1px solid #ff9843;
@@ -76,6 +77,11 @@ const HomeBtn = styled.button`
   padding: 10px 25px;
   color: white;
   cursor: pointer;
+`;
+
+const SearchText = styled.div`
+  width: 480px;
+  margin-left: 40px;
 `;
 
 const ResultList = styled.div`

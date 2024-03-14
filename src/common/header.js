@@ -29,7 +29,7 @@ const Header = ({ changeTab, tab }) => {
           return (
             <MenuText
               key={index}
-              isCurrent={item.value === tab}
+              $iscurrent={item.value === tab}
               onClick={() => changeTab(item.value)}
             >
               {item.name}
@@ -51,7 +51,7 @@ const Header = ({ changeTab, tab }) => {
       </Menu>
       {isLogin ? (
         <MenuText
-          isCurrent={tab === "login"}
+          $iscurrent={tab === "login"}
           onClick={() => changeTab("login")}
         >
           로그인
@@ -68,7 +68,10 @@ const Header = ({ changeTab, tab }) => {
               )}
             </div>
           </div>
-          <Hover isCurrent={tab === "logout"} onClick={() => changeTab("home")}>
+          <Hover
+            $iscurrent={tab === "logout"}
+            onClick={() => changeTab("home")}
+          >
             로그아웃
           </Hover>
         </LogoutBtn>
@@ -106,7 +109,7 @@ const MenuText = styled.div`
   flex-shrink: 0; // 글씨 변형 막기
   font-weight: bold;
   font-size: 20px;
-  color: ${(props) => (props.isCurrent ? "#FF9843" : "black")};
+  color: ${(props) => (props.$iscurrent ? "#FF9843" : "black")};
   cursor: pointer;
 `;
 

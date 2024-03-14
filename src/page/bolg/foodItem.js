@@ -1,18 +1,19 @@
 import React from "react";
 import styled from "styled-components";
 
-const FoodItem = (props) => {
+const FoodItem = (food) => {
+  console.log("food", food);
   return (
     <ListReset>
-      <AReset href={props.url} target="_blank" rel="noopener noreferrer">
+      <AReset href={food.url} target="_blank" rel="noopener noreferrer">
         <BorderLine>
           <div>
-            <img src={props.thumbnail} alt={props.thumbnail} />
+            <img src={food.thumbnail} alt={food.thumbnail} />
           </div>
           <div>
-            <Content>{props.title}</Content>
-            <Content>{props.blogname}</Content>
-            <Content>{props.contents}</Content>
+            <Content>{food.title}</Content>
+            <Content>{food.blogname}</Content>
+            <Content>{food.contents}</Content>
           </div>
         </BorderLine>
       </AReset>

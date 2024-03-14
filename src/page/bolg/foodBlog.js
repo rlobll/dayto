@@ -4,27 +4,27 @@ import { blogSearch } from "./api";
 import FoodItem from "./foodItem";
 import styled from "styled-components";
 
-const FoodBlog = (props) => {
-  const [blogs, setBlogs] = useState([]);
-  const [text, setText] = useState("");
-  const [query, setQuery] = useState("");
+const FoodBlog = () => {
+  const [foodBlogs, setFoodBlogs] = useState([]);
+  const [foodText, setFoodText] = useState("");
+  const [foodQuery, setFoodQuery] = useState("");
 
   useEffect(() => {
-    if (query.length > 0) {
-      blogSearchHttpHandler(query, true);
+    if (foodQuery.length > 0) {
+      blogSearchHttpHandler(foodQuery, true);
     }
-  }, [query]);
+  }, [foodQuery]);
 
   // 엔터를 눌렀을 때 호출 되는 함수
   const onEnter = (e) => {
     if (e.keyCode === 13) {
-      setQuery(text);
+      setFoodQuery(foodText);
     }
   };
 
   // text 검색어가 바뀔 때 호출되는 함수.
   const onTextUpdate = (e) => {
-    setText(e.target.value);
+    setFoodText(e.target.value);
   };
 
   const blogSearchHttpHandler = async (query, reset) => {
@@ -38,16 +38,18 @@ const FoodBlog = (props) => {
 
     const { data } = await blogSearch(params);
     if (reset) {
-      setBlogs(
-        data.documents.map((blog) => ({
-          ...blog,
-          title: blog.title.replace(/<[^>]+>/g, ""), // HTML 태그 제거
-          blogname: blog.blogname.replace(/<[^>]+>/g, ""), // HTML 태그 제거
-          contents: blog.contents.replace(/<[^>]+>/g, ""), // HTML 태그 제거
+      console.log("food", data);
+      setFoodBlogs(
+        data.documents.map((food, index) => ({
+          ...food,
+          id: index, // 각 항목에 고유한 ID 부여
+          title: food.title.replace(/<[^>]+>/g, ""), // HTML 태그 제거
+          blogname: food.blogname.replace(/<[^>]+>/g, ""), // HTML 태그 제거
+          contents: food.contents.replace(/<[^>]+>/g, ""), // HTML 태그 제거
         }))
       );
     } else {
-      setBlogs(blogs.concat(data.documents));
+      setFoodBlogs(foodBlogs.concat(data.documents));
     }
   };
 
@@ -60,11 +62,11 @@ const FoodBlog = (props) => {
           name="query"
           onKeyDown={onEnter} // enter
           onChange={onTextUpdate} // change
-          value={text} // view
+          value={foodText} // view
         />
       </div>
       <UlReset>
-        {blogs.map((blog, index) => (
+        {foodBlogs.map((blog, index) => (
           <FoodItem
             key={index}
             thumbnail={blog.thumbnail}

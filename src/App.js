@@ -6,8 +6,8 @@ import Header from "./common/header";
 import Login from "./page/login";
 import styled from "styled-components";
 import Splash from "./page/splash";
-import Location from "./page/location";
-import KakaoMap from "./page/map/kakaoMap";
+// import Location from "./page/location";
+// import KakaoMap from "./page/map/kakaoMap";
 
 const App = () => {
   const [tab, setTab] = useState("home");

@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 
 const DessertItem = (props) => {
+  console.log("dessert", props);
   return (
     <ListReset>
       <AReset href={props.url} target="_blank" rel="noopener noreferrer">

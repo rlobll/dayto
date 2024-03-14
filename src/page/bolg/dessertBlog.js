@@ -4,27 +4,27 @@ import { blogSearch } from "./api";
 import FoodItem from "./foodItem";
 import styled from "styled-components";
 
-const DessertBlog = (props) => {
-  const [blogs, setBlogs] = useState([]);
-  const [text, setText] = useState("");
-  const [query, setQuery] = useState("");
+const DessertBlog = () => {
+  const [dessertBlogs, setDessertBlogs] = useState([]);
+  const [desserttext, setDessertText] = useState("");
+  const [dessertQuery, setDessertQuery] = useState("");
 
   useEffect(() => {
-    if (query.length > 0) {
-      blogSearchHttpHandler(query, true);
+    if (dessertQuery.length > 0) {
+      blogSearchHttpHandler(dessertQuery, true);
     }
-  }, [query]);
+  }, [dessertQuery]);
 
   // 엔터를 눌렀을 때 호출 되는 함수
   const onEnter = (e) => {
     if (e.keyCode === 13) {
-      setQuery(text);
+      setDessertQuery(desserttext);
     }
   };
 
   // text 검색어가 바뀔 때 호출되는 함수.
   const onTextUpdate = (e) => {
-    setText(e.target.value);
+    setDessertText(e.target.value);
   };
 
   const blogSearchHttpHandler = async (query, reset) => {
@@ -38,16 +38,18 @@ const DessertBlog = (props) => {
 
     const { data } = await blogSearch(params);
     if (reset) {
-      setBlogs(
-        data.documents.map((blog) => ({
-          ...blog,
-          title: blog.title.replace(/<[^>]+>/g, ""), // HTML 태그 제거
-          blogname: blog.blogname.replace(/<[^>]+>/g, ""), // HTML 태그 제거
-          contents: blog.contents.replace(/<[^>]+>/g, ""), // HTML 태그 제거
+      console.log("dessert", data);
+      setDessertBlogs(
+        data.documents.map((dessert, index) => ({
+          ...dessert,
+          id: index, // 각 항목에 고유한 ID 부여
+          title: dessert.title.replace(/<[^>]+>/g, ""), // HTML 태그 제거
+          blogname: dessert.blogname.replace(/<[^>]+>/g, ""), // HTML 태그 제거
+          contents: dessert.contents.replace(/<[^>]+>/g, ""), // HTML 태그 제거
         }))
       );
     } else {
-      setBlogs(blogs.concat(data.documents));
+      setDessertBlogs(dessertBlogs.concat(data.documents));
     }
   };
 
@@ -60,18 +62,18 @@ const DessertBlog = (props) => {
           name="query"
           onKeyDown={onEnter} // enter
           onChange={onTextUpdate} // change
-          value={text} // view
+          value={desserttext} // view
         />
       </div>
       <UlReset>
-        {blogs.map((blog, index) => (
+        {dessertBlogs.map((dessert) => (
           <FoodItem
-            key={index}
-            thumbnail={blog.thumbnail}
-            title={blog.title}
-            blogname={blog.blogname}
-            contents={blog.contents}
-            url={blog.url}
+            key={dessert.id}
+            thumbnail={dessert.thumbnail}
+            title={dessert.title}
+            blogname={dessert.blogname}
+            contents={dessert.contents}
+            url={dessert.url}
           />
         ))}
       </UlReset>

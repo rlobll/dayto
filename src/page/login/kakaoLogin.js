@@ -7,16 +7,17 @@ const Kakao = () => {
   // oauth 요청 URL
 
   const restApiKey = process.env.REACT_APP_REST_API_KEY;
-  console.log(restApiKey);
+  console.log("kakao", restApiKey);
   const redirectUri = process.env.REACT_APP_REDIRECT_URI;
-  console.log(redirectUri);
+  console.log("kakao", redirectUri);
   const kakaoURL = `https://kauth.kakao.com/oauth/authorize?client_id=${restApiKey}&redirect_uri=${redirectUri}&response_type=code`;
-  const handleLogin = () => {
-    window.location.href = kakaoURL;
+
+  const kakaoClick = () => {
+    window.open(kakaoURL, "kakaoPopup", "width=600,height=400");
   };
   return (
     <>
-      <KakaoLogin onClick={handleLogin}>카카오 로그인</KakaoLogin>
+      <KakaoLogin onClick={kakaoClick}>카카오 로그인</KakaoLogin>
     </>
   );
 };

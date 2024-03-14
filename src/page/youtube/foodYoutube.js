@@ -2,8 +2,8 @@ import React, { useEffect, useState } from "react";
 import FoodVideoList from "./foodVideoList";
 
 function FoodYoutube() {
-  const apiKey = process.env.REACT_APP_GOOGLE_API_KEY;
-  const [videos, setVideos] = useState([]);
+  const apiKey = "AIzaSyAtOCQx0Y1Wz4vhjg28_QcAsG6DFBZvbdg";
+  const [foodVideos, setFoodVideos] = useState([]);
 
   useEffect(() => {
     const requestOptions = {
@@ -16,11 +16,11 @@ function FoodYoutube() {
       requestOptions
     )
       .then((response) => response.json())
-      .then((result) => setVideos(result.items))
+      .then((result) => setFoodVideos(result.items))
       .catch((error) => console.log("error", error));
   }, []);
 
-  return <FoodVideoList videos={videos} />;
+  return <FoodVideoList videos={foodVideos} />;
 }
 
 export default FoodYoutube;

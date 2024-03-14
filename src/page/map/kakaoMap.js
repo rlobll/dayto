@@ -33,7 +33,13 @@ const KakaoMap = ({ searchPlace }) => {
 
     // 키워드로 장소를 검색합니다
     // ps.keywordSearch("동인천 음식점", placesSearchCB);
-    ps.keywordSearch(searchPlace, placesSearchCB);
+    // ps.keywordSearch(searchPlace, placesSearchCB);
+    // 이걸 사용하면 검색창이 빈값인데 카워드를 호출해서 400 에러가 나타남 그래서 아래 조건문으로 변경
+
+    // 키워드가 비어있지 않은 경우에만 검색을 수행합니다.
+    if (searchPlace.trim() !== "") {
+      ps.keywordSearch(searchPlace, placesSearchCB);
+    }
 
     // 키워드 검색 완료 시 호출되는 콜백함수 입니다
     function placesSearchCB(data, status, pagination) {

@@ -2,8 +2,8 @@ import React, { useEffect, useState } from "react";
 import DessertVideoList from "./DessertVideoList";
 
 function DessertYoutube() {
-  const apiKey = process.env.REACT_APP_GOOGLE_API_KEY;
-  const [videos, setVideos] = useState([]);
+  const apiKey = "AIzaSyAtOCQx0Y1Wz4vhjg28_QcAsG6DFBZvbdg";
+  const [dessertVideos, setDessertVideos] = useState([]);
 
   useEffect(() => {
     const requestOptions = {
@@ -12,15 +12,15 @@ function DessertYoutube() {
     };
 
     fetch(
-      `https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=10&q=Jinyeong%20%EC%A7%84%EC%98%81&key=${apiKey}`,
+      `https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=5&q=Jinyeong%20%EC%A7%84%EC%98%81&key=${apiKey}`,
       requestOptions
     )
       .then((response) => response.json())
-      .then((result) => setVideos(result.items))
+      .then((result) => setDessertVideos(result.items))
       .catch((error) => console.log("error", error));
   }, []);
 
-  return <DessertVideoList videos={videos} />;
+  return <DessertVideoList videos={dessertVideos} />;
 }
 
 export default DessertYoutube;
