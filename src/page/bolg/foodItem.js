@@ -26,6 +26,10 @@ export default FoodItem;
 const ListReset = styled.li`
   width: 1000px;
   list-style: none;
+
+  @media (max-width: 485px) {
+    width: 100%;
+  }
 `;
 
 const AReset = styled.a`
@@ -39,10 +43,23 @@ const AReset = styled.a`
 const Content = styled.p`
   margin: 0 0 15px 20px;
   padding: 0;
+
+  @media (max-width: 485px) {
+    margin: 0;
+    padding: 0 0 10px 0;
+  }
 `;
 
 const BorderLine = styled.div`
   display: flex;
   border-bottom: 1px solid #ff9843;
   margin-bottom: 30px;
+
+  @media (max-width: 485px) {
+    display: block;
+    text-align: center;
+    border: 1px solid #ff9843;
+    border-radius: 10px;
+    padding: 20px;
+  }
 `;

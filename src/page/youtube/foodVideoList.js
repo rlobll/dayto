@@ -35,6 +35,11 @@ const VideoList = styled.div`
   margin-bottom: 100px;
   overflow-y: hidden;
   /* overflow-x: hidden; */
+
+  @media (max-width: 485px) {
+    display: flex;
+    align-items: center;
+  }
 `;
 
 const ScrollBar = styled.div`

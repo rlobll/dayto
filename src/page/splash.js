@@ -4,7 +4,7 @@ const Splash = ({ onClick }) => {
   return (
     <div>
       <Wrapper>
-        <img src="../logo444.png" alt="3" style={{ width: "500px" }} />
+        <LogoImage src="../logo444.png" alt="3" />
         <div>
           <StartBtn onClick={() => onClick()}>시작하기</StartBtn>
         </div>
@@ -21,11 +21,22 @@ const Wrapper = styled.div`
   flex-direction: column;
   align-items: center;
   margin-top: 250px;
+
+  @media (max-width: 485px) {
+    width: 100%;
+    margin: 180px 0;
+  }
 `;
+
+const LogoImage = styled.img`
+  width: 500px;
+
+  @media (max-width: 485px) {
+    width: 100%;
+  }
+`;
+
 const StartBtn = styled.div`
-  /* position: fixed;
-  top: 480px;
-  left: 350px; */
   color: #86a7fc;
   font-size: 3rem;
   font-weight: bold;

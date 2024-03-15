@@ -107,10 +107,10 @@ const LogoImage = styled.img`
 
 const TotalMenu = styled.div`
   display: flex;
-  width: 100%;
+  max-width: 1000px;
 
   @media (max-width: 485px) {
-    padding: 0 15px;
+    padding: 0 20px;
   }
 `;
 

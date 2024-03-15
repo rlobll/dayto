@@ -116,7 +116,7 @@ const KakaoMap = ({ searchPlace }) => {
   return (
     <MapDisplay>
       <div>
-        <MapBorder id="map" style={{ width: "480px", height: "480px" }} />
+        <MapBorder id="map" />
       </div>
       <ListBorder>
         <List id="result-list">
@@ -153,25 +153,58 @@ const MapDisplay = styled.div`
   display: flex;
   justify-content: space-between;
   margin-top: 20px;
+
+  @media (max-width: 485px) {
+    display: block;
+  }
 `;
 
 const MapBorder = styled.div`
+  width: 480px;
+  height: 480px;
   border: 1px solid #ff9843;
   border-radius: 10px;
+
+  @media (max-width: 485px) {
+    width: 100%;
+    height: 300px;
+    margin-bottom: 30px;
+  }
 `;
 
 const ListBorder = styled.div`
   border: 1px solid #ff9843;
   border-radius: 10px;
+  padding: 10px;
 `;
 const List = styled.div`
-  width: 480px;
-  height: 420px;
+  width: 450px;
+  height: 400px;
   overflow: scroll;
   padding: 10px;
   font-size: 18px;
-  /* overflow-x: hidden; */
-  /* overflow-y: hidden; */
+  border-bottom: 1px solid #ff9843;
+  overflow-x: hidden;
+
+  /* 스크롤바 디자인 */
+  &::-webkit-scrollbar {
+    width: 10px; /* 스크롤바 높이 */
+  }
+  &::-webkit-scrollbar-thumb {
+    background-color: #ff9843; /* 스크롤바 색상 */
+    border-radius: 10px; /* 스크롤바의 모서리를 둥글게 만듭니다. */
+  }
+  /* &::-webkit-scrollbar-track { */
+  /* background-color: #f1f1f1; 스크롤바 트랙 색상 */
+  /* border-radius: 4px; 스크롤바의 모서리를 둥글게 만듭니다. */
+  /* } */
+
+  @media (max-width: 485px) {
+    width: 100%;
+    height: 300px;
+    padding: 10px 0;
+    font-size: 15px;
+  }
 `;
 
 const ListTitle = styled.div`

@@ -89,6 +89,10 @@ const FoodInput = styled.input`
   width: 380px;
   padding: 10px 15px;
   outline: none;
+
+  @media (max-width: 485px) {
+    width: 100%;
+  }
 `;
 
 const UlReset = styled.ul`

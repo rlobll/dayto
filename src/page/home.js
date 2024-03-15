@@ -21,19 +21,21 @@ const Home = ({ addList }) => {
   return (
     <>
       <HomeSearch>
-        <Form>
+        <FormText>
           <form onSubmit={handleSearch}>
-            <HomeInput
-              placeholder="검색어입력"
-              value={searchValue}
-              onChange={ChangInpute}
-            />
-            <HomeBtn type="submit">검색</HomeBtn>
+            <FormHome>
+              <HomeInput
+                placeholder="검색어입력"
+                value={searchValue}
+                onChange={ChangInpute}
+              />
+              <HomeBtn type="submit">검색</HomeBtn>
+            </FormHome>
           </form>
           <SearchText>
             {searchResult && <p>" {searchResult} "에 대한 결과입니다</p>}
           </SearchText>
-        </Form>
+        </FormText>
         <div>
           <ResultList>
             <div>
@@ -56,13 +58,29 @@ const HomeSearch = styled.div`
   max-width: 1000px;
 `;
 
-const Form = styled.div`
+const FormText = styled.div`
   display: flex;
-  /* width: 500px; */
+  justify-content: space-between;
+  align-items: center;
+
+  @media (max-width: 485px) {
+    display: block;
+    margin: 0;
+  }
+`;
+
+const FormHome = styled.div`
+  width: 480px;
+  display: flex;
+
+  @media (max-width: 485px) {
+    width: 100%;
+  }
 `;
 
 const HomeInput = styled.input`
-  width: 360px;
+  /* width: 365px; */
+  width: 80%;
   padding: 10px 15px;
   border-radius: 10px;
   border: 1px solid #ff9843;
@@ -70,18 +88,23 @@ const HomeInput = styled.input`
 `;
 
 const HomeBtn = styled.button`
-  border: 1px solid #ff9843;
+  width: 20%;
+  border: none;
   border-radius: 10px;
   background: #ff9843;
   margin-left: 10px;
-  padding: 10px 25px;
   color: white;
   cursor: pointer;
 `;
 
 const SearchText = styled.div`
-  width: 480px;
-  margin-left: 40px;
+  width: 50%;
+  margin-left: 30px;
+
+  @media (max-width: 485px) {
+    width: 100%;
+    margin: 0;
+  }
 `;
 
 const ResultList = styled.div`
