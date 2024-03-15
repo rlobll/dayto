@@ -37,7 +37,8 @@ const Header = ({ changeTab, tab }) => {
               </MenuText>
             );
           })}
-          {/* <MenuText tab={tab} onClick={() => changeTab("home")}>
+          <>
+            {/* <MenuText tab={tab} onClick={() => changeTab("home")}>
           홈
         </MenuText>
         <MenuText tab={tab} onClick={() => changeTab("location")}>
@@ -49,34 +50,38 @@ const Header = ({ changeTab, tab }) => {
         <MenuText tab={tab} onClick={() => changeTab("dessert")}>
           디져트
         </MenuText> */}
+          </>
         </Menu>
-        {isLogin ? (
-          <MenuText
-            $iscurrent={tab === "login"}
-            onClick={() => changeTab("login")}
-          >
-            로그인
-          </MenuText>
-        ) : (
-          <LogoutBtn>
-            <div onClick={handleClick}>
-              <Hover>김은비</Hover>
-              <div>
-                {showMyPage && (
-                  <MyPage>
-                    <Hover>마이페이지</Hover>
-                  </MyPage>
-                )}
-              </div>
-            </div>
-            <Hover
-              $iscurrent={tab === "logout"}
-              onClick={() => changeTab("home")}
+
+        <div>
+          {isLogin ? (
+            <MenuText
+              $iscurrent={tab === "login"}
+              onClick={() => changeTab("login")}
             >
-              로그아웃
-            </Hover>
-          </LogoutBtn>
-        )}
+              로그인
+            </MenuText>
+          ) : (
+            <LogoutBtn>
+              <div onClick={handleClick}>
+                <Hover>김은비</Hover>
+                <div>
+                  {showMyPage && (
+                    <MyPage>
+                      <Hover>마이페이지</Hover>
+                    </MyPage>
+                  )}
+                </div>
+              </div>
+              <Hover
+                $iscurrent={tab === "logout"}
+                onClick={() => changeTab("home")}
+              >
+                로그아웃
+              </Hover>
+            </LogoutBtn>
+          )}
+        </div>
       </TotalMenu>
     </Wrapper>
   );
@@ -86,17 +91,13 @@ export default Header;
 
 const Wrapper = styled.div`
   display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin: 30px auto 0;
-  padding-right: 20px;
-  height: 50px;
   max-width: 1000px;
+  margin: 30px auto 0;
 
   @media (max-width: 485px) {
     display: block;
     text-align: center;
-    padding: 0;
+    padding: 0 20px;
   }
 `;
 
@@ -107,22 +108,17 @@ const LogoImage = styled.img`
 
 const TotalMenu = styled.div`
   display: flex;
-  max-width: 1000px;
-
-  @media (max-width: 485px) {
-    padding: 0 20px;
-  }
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
 `;
 
 const Menu = styled.div`
   display: flex;
-  width: 100%;
   gap: 30px;
-  /* padding-left: 20px; */
 `;
 
 const MenuText = styled.div`
-  display: flex;
   flex-shrink: 0; // 글씨 변형 막기
   font-weight: bold;
   font-size: 20px;

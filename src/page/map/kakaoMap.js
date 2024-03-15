@@ -167,7 +167,7 @@ const MapBorder = styled.div`
 
   @media (max-width: 485px) {
     width: 100%;
-    height: 300px;
+    height: 380px;
     margin-bottom: 30px;
   }
 `;
