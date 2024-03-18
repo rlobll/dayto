@@ -80,6 +80,7 @@ const App = () => {
         <div>
           <Header changeTab={(tabState) => changeTab(tabState)} tab={tab} />
           {tab === "login" && <Login />}
+          {tab === "logout" && <Home />}
           <Width>
             {/* {tab !== "login"  && < 지도 부분 >} 이거는 지도 부분이고 로그인은 또 따로 해야 나타난다  */}
             {/* {tab !== "login" && <KakaoMap />} */}
@@ -107,6 +108,10 @@ const Width = styled.div`
   /* display: flex; */
   /* justify-content: space-between; */
   gap: 40px;
+
+  @media (max-width: 485px) {
+    margin-top: 80px;
+  }
 `;
 
 // 1. 단어 입력

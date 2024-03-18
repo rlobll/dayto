@@ -1,5 +1,5 @@
 // import { useEffect } from "react";
-import Kakao from "./login/kakaoLogin";
+import KakaoLogin from "./login/kakaoLogin";
 import Naver from "./login/naverLogin";
 import styled from "styled-components";
 
@@ -10,15 +10,15 @@ const Login = () => {
       <ButtonWrap>
         <KakaoBtn>
           <KakaoImg></KakaoImg>
-          <Kakao />
+          <KakaoLogin />
         </KakaoBtn>
         <NaverBtn>
           <NaverImg></NaverImg>
           <Naver />
         </NaverBtn>
-        <GoogleBtn>
+        {/* <GoogleBtn>
           <GoogleImg></GoogleImg>구글 로그인
-        </GoogleBtn>
+        </GoogleBtn> */}
       </ButtonWrap>
     </LoginWrap>
   );

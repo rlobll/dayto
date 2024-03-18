@@ -3,15 +3,13 @@ import styled from "styled-components";
 
 const Naver = () => {
   const NAVER_CLIENT_ID = "fpsR1qbI1E8CO2t8ATql"; // 발급받은 클라이언트 아이디
-  console.log("naver", NAVER_CLIENT_ID);
   const REDIRECT_URL = "http://localhost:3000"; // callback URL
-  console.log("naver", REDIRECT_URL);
   const STATE = "false";
   const NAVER_AUTH_URL = `https://nid.naver.com/oauth2.0/authorize?response_type=code&client_id=${NAVER_CLIENT_ID}&state=${STATE}&redirect_uri=${REDIRECT_URL}`;
 
   const naverClick = () => {
-    // window.open(NAVER_AUTH_URL, "naverPopup", "width=600,height=400");
-    window.location.href = NAVER_AUTH_URL;
+    window.open(NAVER_AUTH_URL, "naverPopup", "width=600,height=400");
+    // window.location.href = NAVER_AUTH_URL;
   };
   return (
     <div>

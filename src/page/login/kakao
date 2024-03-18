@@ -4,8 +4,20 @@ import styled from "styled-components";
 const KakaoLogin = () => {
   const [user, setUser] = useState(null);
   const [isLogin, setIsLogin] = useState(false);
+  // const Rest_api_key = "e5c7de101f957099b70572a525bfd5f4"; //REST API KEY
+  // const redirect_uri = "https://localhost:3000"; //Redirect URI
+  // oauth 요청 URL
+
+  // const restApiKey = process.env.REACT_APP_REST_API_KEY;
+  // const redirectUri = "http://localhost:3000/auth/kakao";
+  // const kakaoURL = `https://kauth.kakao.com/oauth/authorize?client_id=${restApiKey}&redirect_uri=${redirectUri}&response_type=code`;
 
   const Kakao = window.Kakao;
+
+  // const kakaoClick = () => {
+  //   // window.open(kakaoURL, "naverPopup", "width=600,height=400"); // 팝업창으로 나타나게 하는 거
+  //   window.location.href = kakaoURL;
+  // };
 
   const initKakao = async () => {
     // 등록된 앱의 JavaScript key
@@ -33,11 +45,21 @@ const KakaoLogin = () => {
           success(res) {
             console.log("카카오 인가 요청 성공");
             setIsLogin(true);
+            // const kakaoAccount = res.kakao_account;
+            // localStorage.setItem("email", kakaoAccount.email);
+            // localStorage.setItem(
+            //   "profileImg",
+            //   kakaoAccount.profile.profile_image_url
+            // );
+            // localStorage.setItem("nickname", kakaoAccount.profile.name);
             localStorage.setItem("nickname", "은비");
             setUser({
+              // email: kakaoAccount.email,
+              // profileImg: kakaoAccount.profile.profile_image_url,
+              // nickname: kakaoAccount.profile.nickname,
               nickname: localStorage.getItem("nickname"),
+              // email: kakaoAccount.profile.email,
             });
-            window.location.reload();
           },
           fail(error) {
             console.log(error);
@@ -50,18 +72,17 @@ const KakaoLogin = () => {
     });
   };
 
-  // header로 이동
-  // const kakaoLogout = () => {
-  //   Kakao.Auth.logout((res) => {
-  //     console.log(
-  //       "얘는 로그아웃 누르면 삭제되어서 null이 나온다",
-  //       Kakao.Auth.getAccessToken()
-  //     );
-  //     console.log("이게 뭔데 true가 뜨는거지?삭제 성공했다는건가?", res);
-  //     localStorage.removeItem("nickname");
-  //     setUser(null);
-  //   });
-  // };
+  const kakaoLogout = () => {
+    Kakao.Auth.logout((res) => {
+      console.log(
+        "얘는 로그아웃 누르면 삭제되어서 null이 나온다",
+        Kakao.Auth.getAccessToken()
+      );
+      console.log("이게 뭔데 true가 뜨는거지?삭제 성공했다는건가?", res);
+      localStorage.removeItem("nickname");
+      setUser(null);
+    });
+  };
 
   useEffect(() => {
     initKakao();
@@ -80,23 +101,26 @@ const KakaoLogin = () => {
   return (
     <>
       <div>
-        <KakaoLoginBtn
+        {/* <KakaoLoginBtn
           // onClick={kakaoClick}
-          onClick={() => {
-            kakaoLogin();
-          }}
+          onClick={kakaoLogin}
         >
           카카오 로그인
-        </KakaoLoginBtn>
+        </KakaoLoginBtn> */}
 
-        {/* {user ? (
+        {user ? (
           <div>
             <button onClick={kakaoLogout}>로그아웃</button>
             <p>{user.nickname}</p>
           </div>
         ) : (
-          <KakaoLoginBtn onClick={kakaoLogin}>카카오 로그인</KakaoLoginBtn>
-        )} */}
+          <KakaoLoginBtn
+            // onClick={kakaoClick}
+            onClick={kakaoLogin}
+          >
+            카카오 로그인
+          </KakaoLoginBtn>
+        )}
       </div>
     </>
   );
