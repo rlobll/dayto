@@ -17,11 +17,11 @@ const Header = ({ changeTab, tab }) => {
     } else {
       setIsLogin(false);
     }
-  }, [localStorage.getItem("nickname")]);
+  }, []);
 
-  const toggleTab = () => {
-    setIsLogin(!isLogin);
-  };
+  // const toggleTab = () => {
+  //   setIsLogin(!isLogin);
+  // };
 
   const [showMyPage, setShowMyPage] = useState(false);
 
@@ -67,7 +67,13 @@ const Header = ({ changeTab, tab }) => {
 
   return (
     <Wrapper>
-      <LogoImage src="../logo444.png" alt="" onClick={toggleTab} />
+      <LogoImage
+        src="../logo444.png"
+        alt=""
+        onClick={() => {
+          changeTab("home");
+        }}
+      />
       <TotalMenu>
         <Menu>
           {tabList.map((item, index) => {

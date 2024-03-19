@@ -34,9 +34,11 @@ const KakaoLogin = () => {
             console.log("카카오 인가 요청 성공");
             setIsLogin(true);
             localStorage.setItem("nickname", "은비");
+            // 사용자 정보 설정
             setUser({
               nickname: localStorage.getItem("nickname"),
             });
+            // 페이지 리로드
             window.location.reload();
           },
           fail(error) {
@@ -76,6 +78,14 @@ const KakaoLogin = () => {
       });
     }
   }, [isLogin]);
+
+  // useEffect(() => {
+  //   // isLogin 상태가 변경될 때마다 실행됩니다.
+  //   // isLogin 값이 true이면 홈 페이지로 이동합니다.
+  //   if (isLogin) {
+  //     window.location.href = "/home"; // 홈 페이지로 이동
+  //   }
+  // }, [isLogin]);
 
   return (
     <>

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Home from "./page/home";
 import Food from "./page/food";
 import Dessert from "./page/dessert";
@@ -73,6 +73,22 @@ const App = () => {
   // 이건 로그인 창 들어갈 때 아래부분에 지도가 나타남
 
   const [isStart, setIsStart] = useState(false);
+
+  useEffect(() => {
+    // 로컬 스토리지에서 토큰을 가져옵니다.
+    const nickname = localStorage.getItem("nickname");
+    // 닉네임이 있다면
+    if (nickname) {
+      // 닉네임이 있을 때의 동작을 여기에 작성합니다.
+      setIsStart(true);
+      console.log("닉네임이 있습니다.");
+      // 예를 들어, 다른 페이지로 이동하거나 특정 함수를 호출하는 등의 동작을 수행할 수 있습니다.
+    } else {
+      // 닉네임이 없을 때의 동작을 여기에 작성합니다.
+      console.log("닉네임이 없습니다.");
+      setIsStart(false); // 상태를 false로 설정하여 화면을 감춥니다.
+    }
+  }, []);
 
   return (
     <div className="App">
