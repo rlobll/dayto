@@ -18,3 +18,6 @@
 - styled-component : [npm i styled-components]
 - axios :[npm install axios]
 - react-kakao-maps-sdk :[npm install react-kakao-maps-sdk]
+- KakaoMap API
+- KakaoLogin API
+- NaverLogin API
