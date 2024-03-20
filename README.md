@@ -68,3 +68,19 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `npm run build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
+### Deployment : 배포 링크
+
+https://dayto.vercel.app/
+
+### Technologies Used : 사용한 기술과 라이브러리
+
+styled-component : [npm i styled-components]
+axios :[npm install axios]
+react-kakao-maps-sdk :[npm install react-kakao-maps-sdk]
+
+### Installation : 프로젝트 설치 및 실행 방법
+
+1 npx create-react-app app-name
+2 cd app-name
+3 npm start :[http://localhost:3000]
